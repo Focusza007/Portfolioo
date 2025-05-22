@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    input {
+      border: none;
+      padding: 10px;
+      height: 10px;
+      background-color: rgba(240, 248, 255, 0);
+      outline: none;
+      width: 300px;
+    }
+
+    .f {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 8px;
+      background-color: rgba(128, 128, 128, 0.33);
+      padding: 2px;
+      border-radius: 10px;
+    }
+
+    .bol {
+      background-color: grey;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+    }
+
+    .j {
+      display: flex;
+      margin-left: auto;
+      margin-right: 30px;
+      right: 40px;
+      font-weight: bold;
+      gap: 15px;
+      align-items: center;
+      top: 0;
+    }
+
+    .k {
+      background-color: rgba(128, 128, 128, 0.273);
+      font-size: 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      height: 60px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      position: fixed;
+      background-color: rgb(255, 255, 255);
+      z-index: 4;
+    }
+
+    .b {
+      display: flex;
+      align-items: center;
+      margin-left: 80px;
+      font-size: 26px;
+    }
+
+    .tt {
+      padding-top: 15px;
+      display: flex;
+      align-items: center;
+      width: 80px;
+      top: 0;
+      left: 0;
+      height: 100%;
+      position: fixed;
+      background-color: rgba(255, 255, 255, 0);
+      z-index: 99;
+      flex-direction: column;
+    }
+
+    .boom {
+      font-size: 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-bottom: 0px;
+    }
+
+    span {
+      color: gray;
+      font-size: 10px;
+      margin: 0px;
+      cursor: default;
+    }
+
+    .o {
+      background-color: grey;
+      height: 30px;
+      width: 30px;
+      border-radius: 100%;
+    }
+
+    .ll {
+      position: absolute;
+      margin-top: 20000px;
+    }
+
+    .body {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 20000px;
+      display: inline-block;
+      font-size: 17px;
+    }
+
+    html,
+    body {
+      padding: 0;
+      margin-top: 30px;
+      margin-left: 40px;
+      margin-right: 0;
+      font-family: "Prompt", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .aa {
+      font-size: 12px;
+      border: 2px solid gray;
+      text-align: center;
+      width: 47px;
+      padding: 5px;
+      border-radius: 7px;
+      color: gray;
+      display: inline;
+      right: 0;
+      float: right;
+      margin-top: 0px;
+    }
+
+    .box {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      height: 120px;
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+
+    .oo {
+      background-color: rgba(210, 210, 210, 0.747);
+      height: 73px;
+      width: 73px;
+      border-radius: 100%;
+      border: 3px solid rgb(146, 146, 146);
+    }
+
+    .box2 {
+      background-color: rgb(255, 255, 255);
+      width: 75px;
+      height: 100%;
+      margin-right: 30px;
+      display: inline-block;
+    }
+
+    .xx {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+      font-size: 11px;
+    }
+
+    .box3 {
+      background-color: aliceblue;
+      margin: 2px;
+      border-radius: 10px;
+      padding: 10px;
+      flex: 1 1 20%;
+      min-width: 250px;
+      transition: 0.3s;
+
+      overflow: hidden;
+    }
+    .box3:hover {
+      transform: scale(1.1);
+      z-index: 2;
+      z-index: 10;
+    }
+    .play {
+      display: none;
+      transition: 0.3s;
+    }
+    .ppl {
+      margin: 5px;
+      color: aliceblue;
+    }
+    a {
+      text-decoration: none;
+    }
+    .box3:hover .play {
+      display: flex;
+      justify-content: center;
+      border-radius: 5px;
+      margin-top: 30px;
+      background-color: blue;
+    }
+    .boox {
+      background-color: aqua;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: aqua;
+      position: relative;
+    }
+    img {
+      margin-bottom: 5px;
+      border-radius: 10px;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <header class="h">
+      <p class="b" style="font-weight: 500">หน้าหลัก</p>
+      <div class="f">
+        <i>🔍</i>
+        <input type="text" placeholder="ค้นหา..." />
+      </div>
+      <div class="j">
+        <div class="bol"></div>
+        <p>TOO55545</p>
+        <p class="k">💲</p>
+        <p class="k">🔔</p>
+      </div>
+    </header>
+    <div class="tt">
+      <p class="boom">🏠</p>
+      <span>หน้าหลัก</span>
+      <p class="boom">📊</p>
+      <span>อันดับ</span>
+      <p class="boom o"></p>
+      <span>อวาต้า</span>
+      <p class="boom">👥</p>
+      <span>Party</span>
+      <p class="boom">💭</p>
+      <span>เพิ่มเติม</span>
+    </div>
+    <p class="ll">sdssd</p>
+    <div class="body">
+      เพื่อน
+      <p class="aa">ดูทั้งหมด</p>
+      <div class="box">
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+        <div class="box2">
+          <div class="oo"></div>
+          <p class="xx">เพิมเพื่อน</p>
+        </div>
+      </div>
+      <p style="margin-top: 0; font-size: 20px; font-weight: 500">
+        แนะนำสำหรับคุณ
+      </p>
+      <div class="boox">
+        <div class="box3">
+          <img src="img/iphon.png" alt="" /><b>Calculator</b><br />
+          <p>เรตตี้ 100%</p>
+          <a href="arr.html">
+            <div class="play">
+              <p class="ppl">เล่น</p>
+            </div></a>
+        </div>
+
+        <div class="box3">
+          <img src="img/Screenshot 2025-05-16 211718.png" alt="" /><b>Draw a picture</b><br />
+          <p>เรตตี้ 100%</p>
+          <a href="point.html">
+            <div class="play">
+              <p class="ppl">เล่น</p>
+            </div></a>
+        </div>
+        <div class="box3">
+          <img src="img/Screenshot 2025-05-16 212105.png" alt="" /><b>xo</b><br />
+          <p>เรตตี้ 100%</p>
+          <a href="ox.html">
+            <div class="play">
+              <p class="ppl">เล่น</p>
+            </div></a>
+        </div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+      </div>
+    </div>
+  </body>
+</html>

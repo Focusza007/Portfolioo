@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .body {
+      background-color: #111;
+      margin: 0;
+      font-family: "Prompt", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+
+      min-height: 100vh;
+      padding: 30px 0;
+    }
+
+    .h1 {
+      color: white;
+      font-size: 50px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      width: 600px;
+      gap: 2px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #222;
+      padding: 5px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .box {
+      background-color: rgb(38, 38, 38);
+      aspect-ratio: 1 / 1;
+      border-radius: 4px;
+      transition: transform 0.2s, border 0.2s;
+    }
+
+    .box:hover {
+      transform: scale(1.2);
+      border: 1px solid white;
+      box-shadow: 0 0 5px white;
+    }
+
+    .color-grid {
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+      margin-bottom: 30px;
+    }
+
+    .color {
+      width: 30px;
+      height: 30px;
+      aspect-ratio: 1 / 1;
+      border: 2px solid white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .deletecolor {
+      height: 30px;
+      background-color: red;
+      width: 69px;
+      border: 2px solid white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: white;
+      font-size: 12px;
+    }
+    .delete {
+      position: absolute;
+      top: 500px;
+    }
+
+    .color:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px white;
+    }
+    .deletecolor:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px white;
+    }
+    .pp {
+      position: absolute;
+      color: white;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+  </style>
+  <body class="body">
+    <div class="pp">
+      <p>สีปัจุบัณ :</p>
+      <div class="color current-color"></div>
+    </div>
+    <center>
+      <div class="h1">Paint</div>
+
+      <div class="color-grid">
+        <div
+          class="color"
+          style="background-color: #e74c3c"
+          data-c="#e74c3c"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #e91e63"
+          data-c="#e91e63"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #9c27b0"
+          data-c="#9c27b0"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #673ab7"
+          data-c="#673ab7"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #3f51b5"
+          data-c="#3f51b5"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #5677fc"
+          data-c="#5677fc"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #03a9f4"
+          data-c="#03a9f4"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #00bcd4"
+          data-c="#00bcd4"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #009688"
+          data-c="#009688"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #259b24"
+          data-c="#259b24"
+        ></div>
+        <div
+          class="color"
+          style="background-color: #8bc34a"
+          data-c="#8bc34a"
+        ></div>
+        <div class="color" id="deleteone" data-c=""></div>
+
+        <div class="delete">
+          <div class="deletecolor" id="delete">ลบทั้งหมด</div>
+          <div class="deletecolor" id="เพิ่ม" style="background-color: #2ecc71">
+            เพิ่มทั้งหมด
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <script>
+          for (i = 0; i <= 575; i++) {
+            document.write('<div class="box"></div>');
+          }
+        </script>
+      </div>
+    </center>
+    <script>
+      let box = document.querySelectorAll(".box");
+      let colorbox = document.querySelectorAll(".color");
+      let Currentcolor = document.querySelector(".current-color ");
+      let color = "";
+      let deleteสี = document.getElementById("delete");
+
+      let add_color = document.getElementById("เพิ่ม");
+
+      Currentcolor.style.backgroundColor = color;
+      deleteสี.addEventListener("click", () => {
+        box.forEach((d) => {
+          d.style.backgroundColor = "";
+        });
+      });
+
+      add_color.addEventListener("click", () => {
+        box.forEach((boxs) => {
+          boxs.style.backgroundColor = color;
+        });
+      });
+
+      colorbox.forEach((newcolor) => {
+        newcolor.addEventListener("click", () => {
+          color = newcolor.dataset.c;
+
+          Currentcolor.style.backgroundColor = color;
+        });
+      });
+
+      box.forEach((boxs) => {
+        boxs.addEventListener("click", () => {
+          boxs.style.backgroundColor = color;
+        });
+      });
+      let indix = false;
+      document.addEventListener("mousedown", () => {
+        indix = true;
+      });
+      document.addEventListener("mouseup", () => {
+        indix = false;
+      });
+      box.forEach((boxs) => {
+        boxs.addEventListener("mouseover", () => {
+          if (indix == true) {
+            boxs.style.backgroundColor = color;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
