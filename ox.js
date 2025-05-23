@@ -1,101 +1,110 @@
-const call = document.querySelectorAll(".p");
-const totogtext = document.getElementById("totogtext");
+const call = document.querySelectorAll(".p")
+const texttotog = document.getElementById("totogtext")
+const texttotogx =document.getElementById("totog")
+const human = "x"
+const Ai = "o"
+let currentPlayer = human
+let  boxs = Array(9).fill(null)
+let Stopgame  = true
 
-const human = "x";
-const ai = "o";
-let currentPlayer = human;
-let stopgrem = false;
+let win = [
+  [0,1,2],[0,3,6],[0,4,8],
+  [3,4,5],[1,4,7],[2,4,6],
+  [6,7,8],[2,5,8]
+]
 
-let boxs = Array(9).fill(null);
+function winconditions(){
 
-const win = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6],
-];
+  for(let [a,b,c] of win){
 
-function winner() {
-  for (let [a, b, c] of win) {
-    if (boxs[a] && boxs[a] === boxs[b] && boxs[a] === boxs[c]) {
-      return boxs[a];
-    }
+    if(boxs[a]!==null&&boxs[a]===boxs[b]&&boxs[a]===boxs[c]) return boxs[a]
   }
-  return null;
+  
+  return null
+}
+function AiMove(){
+
+if(Stopgame)return
+
+for(let[a,b,c] of win ){
+  //หากชนะจะลง
+  if(boxs[a]=== Ai&&boxs[b]=== Ai&&boxs[c]=== null)return Movegame(c);
+  if(boxs[c]=== Ai&&boxs[a]=== Ai&&boxs[b]=== null)return  Movegame(b);
+  if(boxs[b]=== Ai&&boxs[c]=== Ai&&boxs[a]=== null)return Movegame(a);
+//หากแพ้ให้บล็อก
+  if(boxs[a]=== human&&boxs[b]=== human&&boxs[c]=== null)return Movegame(c);
+  if(boxs[c]=== human&&boxs[a]=== human&&boxs[b]=== null)return Movegame(b);
+  if(boxs[b]=== human&&boxs[c]=== human&&boxs[a]=== null)return Movegame(a);
 }
 
-function Ai() {
-  if (stopgrem) return;
-
-  for (let [a, b, c] of win) {
-    // try win
-    if (boxs[a] === ai && boxs[b] === ai && boxs[c] === null) return makeMove(c);
-    if (boxs[a] === ai && boxs[c] === ai && boxs[b] === null) return makeMove(b);
-    if (boxs[b] === ai && boxs[c] === ai && boxs[a] === null) return makeMove(a);
-
-    // block
-    if (boxs[a] === human && boxs[b] === human && boxs[c] === null) return makeMove(c);
-    if (boxs[a] === human && boxs[c] === human && boxs[b] === null) return makeMove(b);
-    if (boxs[b] === human && boxs[c] === human && boxs[a] === null) return makeMove(a);
-  }
-
-  // random
-  const empty = boxs.map((v, i) => v === null ? i : null).filter(i => i !== null);
-  const rand = empty[Math.floor(Math.random() * empty.length)];
-  makeMove(rand);
+ let v = boxs.map((box,i)=> box === null? i:null).filter((out)=> out !==null)
+ let random = v[Math.floor(Math.random() * v.length)]
+ Movegame(random)
 }
 
-function makeMove(index) {
-  if (boxs[index] !== null || stopgrem) return;
+function winner(){
+  let wins = winconditions()
 
-  boxs[index] = currentPlayer;
-  display();
-
-  let winr = winner();
-  if (winr) {
-    stopgrem = true;
-    totogtext.textContent = "ชนะคือ " + winr;
-    return;
+  if(wins){
+    Stopgame =true
+    texttotogx.style.display ="none"
+    texttotog.textContent = "ผุ้เล่น" + wins + "ชนะ"
   }else if(!boxs.includes(null)){
-    stopgrem = true;
-    totogtext.textContent = "เสมอ " ;
-    return;
+    texttotogx.style.display ="none"
+    texttotog.textContent = "เสมอ"
   }
 
-  // toggle turn
-  currentPlayer = currentPlayer === human ? ai : human;
-  totogt();
-
-  // AI move
-  if (currentPlayer === ai) {
-    setTimeout(() => Ai(), 500);
-  }
 }
 
-function display() {
-  call.forEach((el, i) => {
-    el.textContent = boxs[i] || "";
-  });
+function Movegame(index){
+
+ if(boxs[index]!==null)return;
+
+  boxs[index] = currentPlayer 
+  currentPlayer = currentPlayer === human ? Ai:human
+  
+  totogtext()
+ 
+  
+ display()
+ if(currentPlayer === Ai){
+  setTimeout(() => { AiMove() }, 500);
+}
+ winner()
 }
 
-function totogt() {
-  totogtext.textContent = "อยู่ในตาของ " + currentPlayer;
+function start(){
+  
+
+if(Stopgame)return
+totogtext()
+}
+function Reset(){
+  boxs.fill(null)
+  currentPlayer="x"
+  Stopgame = false
+  totogtext()
+  display()
 }
 
-function Reset() {
-  boxs.fill(null);
-  currentPlayer = human;
-  stopgrem = false;
-  totogt();
-  display();
+function totogtext(){
+  texttotogx.style.display ="block"
+  texttotog.textContent =  currentPlayer
+  
+}
+function display(){
+  call.forEach((callt,i)=>{
+    callt.textContent = boxs[i] || "";
+  })
 }
 
-call.forEach((el) => {
-  el.addEventListener("click", () => {
-    if (currentPlayer !== human || stopgrem) return;
-    const index = parseInt(el.dataset.index);
-    makeMove(index);
-  });
-});
-
-totogt();
-display();
+call.forEach((calls)=>{
+  calls.addEventListener("click",()=>{
+    if(currentPlayer !==human || Stopgame )return
+      const index = parseInt(calls.dataset.index)
+   Movegame(index)
+  
+  })
+})
+texttotog.textContent =  ""
+display()

@@ -168,7 +168,7 @@
           style="background-color: #8bc34a"
           data-c="#8bc34a"
         ></div>
-        <div class="color" id="deleteone" data-c=""></div>
+        <div class="color"  data-c=""></div>
 
         <div class="delete">
           <div class="deletecolor" id="delete">ลบทั้งหมด</div>
@@ -195,18 +195,19 @@
       let add_color = document.getElementById("เพิ่ม");
 
       Currentcolor.style.backgroundColor = color;
+      //ลบสี
       deleteสี.addEventListener("click", () => {
         box.forEach((d) => {
           d.style.backgroundColor = "";
         });
       });
-
+//เพิมสีทั้งหมด
       add_color.addEventListener("click", () => {
         box.forEach((boxs) => {
           boxs.style.backgroundColor = color;
         });
       });
-
+//เลือกสีเพื่อเปลี่ยนสีในปัจจุบัญ
       colorbox.forEach((newcolor) => {
         newcolor.addEventListener("click", () => {
           color = newcolor.dataset.c;
@@ -214,19 +215,24 @@
           Currentcolor.style.backgroundColor = color;
         });
       });
-
+//เพิ่มสีลงกล้องที่เลือก
       box.forEach((boxs) => {
         boxs.addEventListener("click", () => {
           boxs.style.backgroundColor = color;
         });
       });
+      //ระบบคลิกค้าง
+
       let indix = false;
+      //  เอาเม้าลง=เริ่มลงสี
       document.addEventListener("mousedown", () => {
         indix = true;
       });
+      //  เอาเม้าขึ้น=ยกเลิดการลงสี
       document.addEventListener("mouseup", () => {
         indix = false;
       });
+      //หากเอาเม้าลงจะเปิดคำสั้งทำให้ใช้mouseoverได้
       box.forEach((boxs) => {
         boxs.addEventListener("mouseover", () => {
           if (indix == true) {

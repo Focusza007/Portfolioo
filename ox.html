@@ -79,7 +79,7 @@
       transform: scale(0.9);
       background-color: rgba(240, 248, d 255, 0.126);
       border-radius: 100%;
-      background-color: rgba(240, 248, 255, 0.373);
+      background-color: rgba(208, 220, 232, 0.373);
     }
     .คะแนน {
       position: absolute;
@@ -128,15 +128,26 @@ cursor: pointer;
 transform: scale(0.9);
 
     }
+    .totog{
+      font-size:30px;
+      color: rgb(0, 0, 0);
+    }
+    .Showresults{
+display: flex;
+justify-content: center;
+align-items: center;
+color: aliceblue;
+background-color: rgb(251, 75, 75);
+width: 150px;
+height: 50px;
+margin-top:20px ;
+border-radius:80px ;
+    }
   </style>
   <body>
     <b class="ชื่อเกม">เกมXO</b>
     
-    <div class="คะแนน">
-      <b style="color: rgb(23, 186, 23)">ชนะ:</b> <br /><br />
-      <b style="color: rgb(185, 200, 20)">เสมอ:</b><br /><br />
-      <b style="color: rgb(186, 39, 23)">แพ้:</b>
-    </div>
+    
     <center><div class="กรอบxo">
       <div class="xo" id="เริ่ม">
         <div class="ช่องxo">
@@ -168,8 +179,9 @@ transform: scale(0.9);
         </div>
       </div>
 </div>
-<p id="totogtext"></p>
-
+<div class="Showresults">
+<p id="totog" style="display: none;">ผู้เล่น :</p><p id="totogtext"class = "totog"></p>
+</div>
       <div class="play" onclick="start()">start</div><br>
       <div class="stop" onclick="Reset()">Reset</div>
     </center>
