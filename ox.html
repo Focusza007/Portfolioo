@@ -132,6 +132,7 @@ transform: scale(0.9);
       font-size:30px;
       color: rgb(0, 0, 0);
     }
+   
     .Showresults{
 display: flex;
 justify-content: center;
@@ -143,10 +144,36 @@ height: 50px;
 margin-top:20px ;
 border-radius:80px ;
     }
+    .mode {
+transform: scale(0.7);
+margin: 0px;
+    }
+    .position{
+      position: absolute;
+      padding: 5px;
+      top: 10px;
+  border-radius: 25px ;
+      background-color: aliceblue;
+      
+    }
+    .modename{
+      margin-top: 0;
+      width: 150px;
+height: 30px;
+    }
   </style>
   <body>
     <b class="ชื่อเกม">เกมXO</b>
     
+    <div class="position">
+      <center>
+      <b class="Showresults modename "id="namemode" ></b>
+      <p class="Showresults mode" style="background-color: rgb(0, 255, 60); color: black;"onclick="Ez()">ง่าย</p>
+      <p class="Showresults mode" style="background-color: rgb(61, 123, 224); color: black;"onclick="normal()">ปกติ</p>
+      <p class="Showresults mode" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"onclick="head()">ยาก</p>
+      
+    </center>
+    </div>
     
     <center><div class="กรอบxo">
       <div class="xo" id="เริ่ม">
