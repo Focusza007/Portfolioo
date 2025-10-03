@@ -94,122 +94,138 @@
       background-color: lightgray;
       display: inline-block;
       cursor: pointer;
-      
     }
-    .กรอบxo{
-transition: 0.3s;
-width: fit-content;
+    .กรอบxo {
+      transition: 0.3s;
+      width: fit-content;
     }
-    .กรอบxo:hover{
-transform: scale(1.01);
-background-color: rgba(0, 0, 0, 0.174);
-border-radius: 10px;
-
+    .กรอบxo:hover {
+      transform: scale(1.01);
+      background-color: rgba(0, 0, 0, 0.174);
+      border-radius: 10px;
     }
-    .g{
+    .g {
       color: aliceblue;
     }
-    .stop{
+    .stop {
       position: absolute;
       top: 20px;
       right: 10px;
-background-color: rgb(178, 60, 60);
-border-radius: 100%;
-width: 50px;
-height: 50px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 12px;
-color: white;
-cursor: pointer;
+      background-color: rgb(178, 60, 60);
+      border-radius: 100%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: white;
+      cursor: pointer;
     }
-    .stop:active{
-transform: scale(0.9);
-
+    .stop:active {
+      transform: scale(0.9);
     }
-    .totog{
-      font-size:30px;
+    .totog {
+      font-size: 30px;
       color: rgb(0, 0, 0);
     }
-   
-    .Showresults{
-display: flex;
-justify-content: center;
-align-items: center;
-color: aliceblue;
-background-color: rgb(251, 75, 75);
-width: 150px;
-height: 50px;
-margin-top:20px ;
-border-radius:80px ;
+
+    .Showresults {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: aliceblue;
+      background-color: rgb(251, 75, 75);
+      width: 150px;
+      height: 50px;
+      margin-top: 20px;
+      border-radius: 80px;
     }
     .mode {
-transform: scale(0.7);
-margin: 0px;
+      transform: scale(0.7);
+      margin: 0px;
     }
-    .position{
+    .position {
       position: absolute;
       padding: 5px;
       top: 10px;
-  border-radius: 25px ;
+      border-radius: 25px;
       background-color: aliceblue;
-      
     }
-    .modename{
+    .modename {
       margin-top: 0;
       width: 150px;
-height: 30px;
+      height: 30px;
     }
   </style>
   <body>
     <b class="ชื่อเกม">เกมXO</b>
-    
+
     <div class="position">
       <center>
-      <b class="Showresults modename "id="namemode" ></b>
-      <p class="Showresults mode" style="background-color: rgb(0, 255, 60); color: black;"onclick="Ez()">ง่าย</p>
-      <p class="Showresults mode" style="background-color: rgb(61, 123, 224); color: black;"onclick="normal()">ปกติ</p>
-      <p class="Showresults mode" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);"onclick="head()">ยาก</p>
-      
-    </center>
+        <b class="Showresults modename" id="namemode"></b>
+        <p
+          class="Showresults mode"
+          style="background-color: rgb(0, 255, 60); color: black"
+          onclick="Ez()"
+        >
+          ง่าย
+        </p>
+        <p
+          class="Showresults mode"
+          style="background-color: rgb(61, 123, 224); color: black"
+          onclick="normal()"
+        >
+          ปกติ
+        </p>
+        <p
+          class="Showresults mode"
+          style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)"
+          onclick="head()"
+        >
+          ยาก
+        </p>
+      </center>
     </div>
-    
-    <center><div class="กรอบxo">
-      <div class="xo" id="เริ่ม">
-        <div class="ช่องxo">
-          <p class="p" data-index="0"></p>
-        </div>
-        <div class="ช่องxo">
-          <p class="p" data-index="1"></p>
-        </div>
-        <div class="ช่องxo" style="border-right: none">
-          <p class="p" data-index="2"></p>
-        </div>
-        <div class="ช่องxo" >
-          <p class="p"data-index="3"></p>
-        </div>
-        <div class="ช่องxo" >
-          <p class="p"data-index="4"></p>
-        </div>
-        <div class="ช่องxo" style="border-right: none">
-          <p class="p" data-index="5"></p>
-        </div>
-        <div class="ช่องxo" style="border-bottom: none" >
-          <p class="p"data-index="6"></p>
-        </div>
-        <div class="ช่องxo" style="border-bottom: none">
-          <p class="p" data-index="7"></p>
-        </div>
-        <div class="ช่องxo" style="border: none">
-          <p class="p" data-index="8"></p>
+
+    <center>
+      <div class="กรอบxo">
+        <div class="xo" id="เริ่ม">
+          <div class="ช่องxo">
+            <p class="p" data-index="0"></p>
+          </div>
+          <div class="ช่องxo">
+            <p class="p" data-index="1"></p>
+          </div>
+          <div class="ช่องxo" style="border-right: none">
+            <p class="p" data-index="2"></p>
+          </div>
+          <div class="ช่องxo">
+            <p class="p" data-index="3"></p>
+          </div>
+          <div class="ช่องxo">
+            <p class="p" data-index="4"></p>
+          </div>
+          <div class="ช่องxo" style="border-right: none">
+            <p class="p" data-index="5"></p>
+          </div>
+          <div class="ช่องxo" style="border-bottom: none">
+            <p class="p" data-index="6"></p>
+          </div>
+          <div class="ช่องxo" style="border-bottom: none">
+            <p class="p" data-index="7"></p>
+          </div>
+          <div class="ช่องxo" style="border: none">
+            <p class="p" data-index="8"></p>
+          </div>
         </div>
       </div>
-</div>
-<div class="Showresults">
-<p id="totog" style="display: none;">ผู้เล่น :</p><p id="totogtext"class = "totog"></p>
-</div>
-      <div class="play" onclick="start()">start</div><br>
+      <div class="Showresults">
+        <p id="totog" style="display: none">ผู้เล่น :</p>
+        <p id="totogtext" class="totog"></p>
+      </div>
+      <div class="play" onclick="start()">start</div>
+      <br />
       <div class="stop" onclick="Reset()">Reset</div>
     </center>
 

@@ -1,20 +1,24 @@
 const call = document.querySelectorAll(".p");
 const texttotog = document.getElementById("totogtext");
 const texttotogx = document.getElementById("totog");
-const namemode = document.getElementById("namemode")
+const namemode = document.getElementById("namemode");
 const human = "x";
 const Ai = "o";
 let currentPlayer = human;
 let boxs = Array(9).fill(null);
-let Stopgame = true
+let Stopgame = true;
 let w = false;
-let lock = "ง่าย"
-let g=0
+let lock = "ง่าย";
+let g = 0;
 let win = [
-  [0, 1, 2],[0, 3, 6],[0, 4, 8],
-  [3, 4, 5],[1, 4, 7],[2, 4, 6],
-  [6, 7, 8],[2, 5, 8],
-  
+  [0, 1, 2],
+  [0, 3, 6],
+  [0, 4, 8],
+  [3, 4, 5],
+  [1, 4, 7],
+  [2, 4, 6],
+  [6, 7, 8],
+  [2, 5, 8],
 ];
 
 function winconditions() {
@@ -24,34 +28,32 @@ function winconditions() {
   }
   return null;
 }
-function none(){
-if(boxs[4] && g===1){
-let d =[0,2,6,8]
-let arendom = d[Math.floor(Math.random()*d.length)]
-Movegame(arendom)
-}
+function none() {
+  if (boxs[4] && g === 1) {
+    let d = [0, 2, 6, 8];
+    let arendom = d[Math.floor(Math.random() * d.length)];
+    Movegame(arendom);
+  }
 }
 
-function Ez(){
-namemode.textContent = "Mode ง่าย"
-return lock = "ง่าย"
+function Ez() {
+  namemode.textContent = "Mode ง่าย";
+  return (lock = "ง่าย");
 }
-function normal(){
-namemode.textContent = "Mode ปกติ"
-return lock = "ปกติ"
+function normal() {
+  namemode.textContent = "Mode ปกติ";
+  return (lock = "ปกติ");
 }
 function AiMove() {
   if (Stopgame) return;
-  if (lock ="ปกติ") {
+  if ((lock = "ปกติ")) {
     if (conditionAi()) return;
   }
 
-
- randomxo()
-
+  randomxo();
 }
-function conditionAi(){
-   for (let [a, b, c] of win) {
+function conditionAi() {
+  for (let [a, b, c] of win) {
     if (boxs[a] === Ai && boxs[b] === Ai && boxs[c] === null)
       return Movegame(c), true;
     if (boxs[c] === Ai && boxs[a] === Ai && boxs[b] === null)
@@ -69,8 +71,8 @@ function conditionAi(){
   return false;
 }
 
-function randomxo(){
- let v = boxs
+function randomxo() {
+  let v = boxs
     .map((box, i) => (box === null ? i : null))
     .filter((out) => out !== null);
   let random = v[Math.floor(Math.random() * v.length)];
@@ -96,7 +98,7 @@ function Movegame(index) {
   if (boxs[index] !== null) return;
 
   boxs[index] = currentPlayer;
-  g++
+  g++;
 
   currentPlayer = currentPlayer === human ? Ai : human;
 
@@ -120,7 +122,7 @@ function start() {
   }
 }
 function Reset() {
-  g = 0
+  g = 0;
   texttotogx.style.display = "none";
   boxs.fill(null);
   currentPlayer = "x";
@@ -149,5 +151,5 @@ call.forEach((calls) => {
   });
 });
 texttotog.textContent = "";
-Ez()
+Ez();
 display();
